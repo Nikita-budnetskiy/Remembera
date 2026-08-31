@@ -105,7 +105,6 @@
       Выбрать цветы
     </a>
 
-
     <p class="hero-note">
       Сервис Remembera сейчас полностью бесплатный.
     </p>
@@ -124,7 +123,6 @@
 >
 
   <div class="container">
-
 
     <div class="section-heading">
 
@@ -398,7 +396,6 @@
 
   <div class="container">
 
-
     <div class="section-heading">
 
       <p class="eyebrow">
@@ -465,8 +462,8 @@
         </h3>
 
         <p>
-          После создания виртуального знака памяти
-          мы отправим подтверждение на ваш email.
+          После отправки заявки мы пришлём
+          подтверждение на указанный вами email.
         </p>
 
       </div>
@@ -556,13 +553,13 @@
       <div class="form-card">
 
 
-      <form id="orderForm">
+        <form id="orderForm">
 
 
           <input
             type="hidden"
-            name="Выбранные цветы"
             id="selectedFlowerInput"
+            name="flower"
           >
 
 
@@ -601,7 +598,7 @@
             <input
               type="text"
               id="personName"
-              name="Имя покойного"
+              name="person_name"
               placeholder="Например, Александр Иванов"
               required
               autocomplete="off"
@@ -652,7 +649,7 @@
               <input
                 type="text"
                 id="country"
-                name="Страна захоронения"
+                name="country"
                 placeholder="Например, Франция"
                 required
                 autocomplete="off"
@@ -671,7 +668,7 @@
               <input
                 type="text"
                 id="city"
-                name="Город захоронения"
+                name="city"
                 placeholder="Например, Париж"
                 required
                 autocomplete="off"
@@ -693,7 +690,7 @@
             <input
               type="text"
               id="cemetery"
-              name="Кладбище"
+              name="cemetery"
               placeholder="Например, Père-Lachaise"
               autocomplete="off"
             >
@@ -715,7 +712,7 @@
             <input
               type="text"
               id="grave"
-              name="Номер могилы или участка"
+              name="grave"
               placeholder="Например, участок 32, могила 145"
               autocomplete="off"
             >
@@ -767,7 +764,7 @@
             <input
               type="email"
               id="email"
-              name="Email заказчика"
+              name="email"
               placeholder="you@example.com"
               required
               autocomplete="email"
@@ -785,7 +782,7 @@
 
             <textarea
               id="message"
-              name="Послание"
+              name="message"
               placeholder="Например: Ты навсегда в наших сердцах."
             ></textarea>
 
@@ -859,13 +856,13 @@
           </p>
 
           <h3>
-            Ваш знак памяти принят
+            Ваша заявка принята
           </h3>
 
           <p>
             Мы получили ваш запрос.
-            После создания виртуального знака памяти
-            подтверждение придёт на указанный вами email.
+            Письмо-подтверждение отправлено
+            на указанный вами email.
           </p>
 
 
@@ -931,7 +928,6 @@
 
   <div class="container footer-inner">
 
-
     <div>
 
       <a
@@ -949,7 +945,6 @@
     </div>
 
 
-
     <div class="footer-links">
 
       <a href="privacy.html">
@@ -961,7 +956,6 @@
       </a>
 
     </div>
-
 
   </div>
 
@@ -976,9 +970,15 @@
 </footer>
 
 
+<!-- EMAILJS -->
 
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script src="script.js"></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+
+<!-- REMEMBERA JS -->
+
+<script src="script.js?v=4"></script>
 
 
 </body>
