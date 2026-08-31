@@ -4,23 +4,22 @@ REMEMBERA — EMAILJS
 =====================================
 */
 
-
 const EMAILJS_PUBLIC_KEY =
   "-w9MQX60NSE-YBPqt";
-
 
 const EMAILJS_SERVICE_ID =
   "service_xxjx108";
 
-
-const EMAILJS_TEMPLATE_ID =
+const USER_TEMPLATE_ID =
   "template_l5g6cba";
 
+const ADMIN_TEMPLATE_ID =
+  "template_ax76bnx";
 
 
 /*
 =====================================
-ПОДКЛЮЧАЕМ EMAILJS
+ИНИЦИАЛИЗАЦИЯ EMAILJS
 =====================================
 */
 
@@ -39,7 +38,6 @@ if (typeof emailjs === "undefined") {
 }
 
 
-
 /*
 =====================================
 ЭЛЕМЕНТЫ СТРАНИЦЫ
@@ -49,34 +47,26 @@ if (typeof emailjs === "undefined") {
 const flowerCards =
   document.querySelectorAll(".flower-card");
 
-
 const selectedFlowerInput =
   document.getElementById("selectedFlowerInput");
-
 
 const summaryFlower =
   document.getElementById("summaryFlower");
 
-
 const orderForm =
   document.getElementById("orderForm");
-
 
 const successMessage =
   document.getElementById("successMessage");
 
-
 const newOrderButton =
   document.getElementById("newOrderButton");
-
 
 const submitButton =
   document.getElementById("submitButton");
 
-
 const currentYear =
   document.getElementById("currentYear");
-
 
 
 /*
@@ -93,7 +83,6 @@ if (currentYear) {
 }
 
 
-
 /*
 =====================================
 ВЫБОР ЦВЕТОВ
@@ -102,96 +91,42 @@ if (currentYear) {
 
 flowerCards.forEach((card) => {
 
-  card.addEventListener(
-    "click",
-    () => {
+  card.addEventListener("click", () => {
 
+    flowerCards.forEach((item) => {
+      item.classList.remove("selected");
+    });
 
-      /*
-      Убираем старое выделение
-      */
+    card.classList.add("selected");
 
-      flowerCards.forEach(
-        (item) => {
+    const flower =
+      card.dataset.flower;
 
-          item.classList.remove(
-            "selected"
-          );
+    selectedFlowerInput.value =
+      flower;
 
-        }
-      );
+    summaryFlower.textContent =
+      flower;
 
+    setTimeout(() => {
 
+      const orderSection =
+        document.getElementById("order");
 
-      /*
-      Выделяем новые цветы
-      */
+      if (orderSection) {
 
-      card.classList.add(
-        "selected"
-      );
+        orderSection.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
 
+      }
 
+    }, 250);
 
-      /*
-      Получаем название цветов
-      */
-
-      const flower =
-        card.dataset.flower;
-
-
-
-      /*
-      Сохраняем выбор
-      */
-
-      selectedFlowerInput.value =
-        flower;
-
-
-
-      /*
-      Показываем возле формы
-      */
-
-      summaryFlower.textContent =
-        flower;
-
-
-
-      /*
-      Переходим к форме
-      */
-
-      setTimeout(
-        () => {
-
-          const orderSection =
-            document.getElementById(
-              "order"
-            );
-
-
-          if (orderSection) {
-
-            orderSection.scrollIntoView({
-              behavior: "smooth",
-              block: "start"
-            });
-
-          }
-
-        },
-        250
-      );
-
-
-    }
-  );
+  });
 
 });
-
 
 
 /*
@@ -206,9 +141,7 @@ if (orderForm) {
     "submit",
     async (event) => {
 
-
       event.preventDefault();
-
 
 
       /*
@@ -224,12 +157,8 @@ if (orderForm) {
           "Пожалуйста, сначала выберите цветы."
         );
 
-
         const flowersSection =
-          document.getElementById(
-            "flowers"
-          );
-
+          document.getElementById("flowers");
 
         if (flowersSection) {
 
@@ -239,11 +168,8 @@ if (orderForm) {
 
         }
 
-
         return;
-
       }
-
 
 
       /*
@@ -260,97 +186,61 @@ if (orderForm) {
         );
 
         return;
-
       }
 
 
-
       /*
-      Получаем элементы формы
-      */
-
-      const emailElement =
-        document.getElementById(
-          "email"
-        );
-
-
-      const personNameElement =
-        document.getElementById(
-          "personName"
-        );
-
-
-      const countryElement =
-        document.getElementById(
-          "country"
-        );
-
-
-      const cityElement =
-        document.getElementById(
-          "city"
-        );
-
-
-      const cemeteryElement =
-        document.getElementById(
-          "cemetery"
-        );
-
-
-      const graveElement =
-        document.getElementById(
-          "grave"
-        );
-
-
-      const messageElement =
-        document.getElementById(
-          "message"
-        );
-
-
-
-      /*
-      Получаем значения
+      Получаем значения формы
       */
 
       const email =
-        emailElement.value.trim();
-
+        document
+          .getElementById("email")
+          .value
+          .trim();
 
       const personName =
-        personNameElement.value.trim();
-
+        document
+          .getElementById("personName")
+          .value
+          .trim();
 
       const country =
-        countryElement.value.trim();
-
+        document
+          .getElementById("country")
+          .value
+          .trim();
 
       const city =
-        cityElement.value.trim();
-
+        document
+          .getElementById("city")
+          .value
+          .trim();
 
       const cemetery =
-        cemeteryElement.value.trim();
-
+        document
+          .getElementById("cemetery")
+          .value
+          .trim();
 
       const grave =
-        graveElement.value.trim();
-
+        document
+          .getElementById("grave")
+          .value
+          .trim();
 
       const message =
-        messageElement.value.trim();
-
+        document
+          .getElementById("message")
+          .value
+          .trim();
 
       const flower =
         selectedFlowerInput.value;
 
 
-
       /*
-      Дополнительная проверка email
+      Проверяем email
       */
 
       if (!email) {
@@ -360,50 +250,18 @@ if (orderForm) {
         );
 
         return;
-
       }
 
 
-
       /*
-      Блокируем кнопку
-      */
-
-      submitButton.disabled =
-        true;
-
-
-      submitButton.textContent =
-        "Отправляем…";
-
-
-
-      /*
-      Данные для EmailJS
+      Данные для обоих шаблонов
       */
 
       const templateParams = {
 
-        /*
-        Используется в:
-        To Email = {{email}}
-        */
-
         email: email,
 
-
-        /*
-        Используется в письме:
-        {{flower}}
-        */
-
         flower: flower,
-
-
-        /*
-        Остальные данные
-        уже передаём на будущее
-        */
 
         person_name:
           personName,
@@ -415,88 +273,106 @@ if (orderForm) {
           city,
 
         cemetery:
-          cemetery ||
-          "Не указано",
+          cemetery || "Не указано",
 
         grave:
-          grave ||
-          "Не указано",
+          grave || "Не указано",
 
         message:
-          message ||
-          "Не указано"
+          message || "Не указано"
 
       };
 
 
+      /*
+      Блокируем кнопку
+      */
 
-      console.log(
-        "Remembera: отправляем письмо",
-        templateParams
-      );
+      submitButton.disabled =
+        true;
 
+      submitButton.textContent =
+        "Отправляем…";
 
 
       try {
 
-
         /*
-        EMAILJS
+        1. ПИСЬМО ПОЛЬЗОВАТЕЛЮ
         */
 
-        const response =
+        const userResponse =
           await emailjs.send(
-
             EMAILJS_SERVICE_ID,
-
-            EMAILJS_TEMPLATE_ID,
-
+            USER_TEMPLATE_ID,
             templateParams
-
           );
 
-
-
         console.log(
-          "EmailJS success:",
-          response
+          "Письмо пользователю отправлено:",
+          userResponse
         );
 
 
+        /*
+        2. ПИСЬМО АДМИНИСТРАТОРУ
+        */
+
+        try {
+
+          const adminResponse =
+            await emailjs.send(
+              EMAILJS_SERVICE_ID,
+              ADMIN_TEMPLATE_ID,
+              templateParams
+            );
+
+          console.log(
+            "Письмо администратору отправлено:",
+            adminResponse
+          );
+
+        }
+
+        catch (adminError) {
+
+          /*
+          Пользователю уже всё отправилось,
+          поэтому не показываем ему ошибку.
+          */
+
+          console.error(
+            "Ошибка отправки админского письма:",
+            adminError
+          );
+
+        }
+
 
         /*
-        Успех
+        ПОКАЗЫВАЕМ УСПЕХ
         */
 
         orderForm.style.display =
           "none";
 
-
         successMessage
           .classList
           .add("visible");
 
-
         successMessage
           .scrollIntoView({
-
             behavior: "smooth",
-
             block: "center"
-
           });
-
 
       }
 
-
-
       catch (error) {
 
-
         /*
-        Показываем реальную
-        ошибку EmailJS
+        Если не отправилось именно
+        письмо пользователю
         */
 
         console.error(
@@ -504,40 +380,24 @@ if (orderForm) {
           error
         );
 
-
         let status =
           "неизвестно";
-
 
         let text =
           "Неизвестная ошибка";
 
-
         if (error) {
 
-
           if (error.status) {
-
-            status =
-              error.status;
-
+            status = error.status;
           }
-
 
           if (error.text) {
-
-            text =
-              error.text;
-
+            text = error.text;
           }
 
-          else if (
-            error.message
-          ) {
-
-            text =
-              error.message;
-
+          else if (error.message) {
+            text = error.message;
           }
 
           else {
@@ -545,9 +405,7 @@ if (orderForm) {
             try {
 
               text =
-                JSON.stringify(
-                  error
-                );
+                JSON.stringify(error);
 
             }
 
@@ -560,10 +418,7 @@ if (orderForm) {
 
           }
 
-
         }
-
-
 
         alert(
           "Ошибка EmailJS\n\n" +
@@ -574,34 +429,22 @@ if (orderForm) {
           text
         );
 
-
       }
 
-
-
       finally {
-
-
-        /*
-        Возвращаем кнопку
-        */
 
         submitButton.disabled =
           false;
 
-
         submitButton.textContent =
           "Оставить виртуальные цветы";
 
-
       }
-
 
     }
   );
 
 }
-
 
 
 /*
@@ -616,34 +459,14 @@ if (newOrderButton) {
     "click",
     () => {
 
-
-      /*
-      Очищаем форму
-      */
-
       orderForm.reset();
-
-
-
-      /*
-      Показываем её снова
-      */
 
       orderForm.style.display =
         "block";
 
-
       successMessage
         .classList
-        .remove(
-          "visible"
-        );
-
-
-
-      /*
-      Убираем выбор цветов
-      */
+        .remove("visible");
 
       flowerCards.forEach(
         (card) => {
@@ -655,31 +478,14 @@ if (newOrderButton) {
         }
       );
 
-
-
-      /*
-      Очищаем выбранные цветы
-      */
-
       selectedFlowerInput.value =
         "";
-
 
       summaryFlower.textContent =
         "Цветы пока не выбраны";
 
-
-
-      /*
-      Возвращаем пользователя
-      к цветам
-      */
-
       const flowersSection =
-        document.getElementById(
-          "flowers"
-        );
-
+        document.getElementById("flowers");
 
       if (flowersSection) {
 
@@ -688,7 +494,6 @@ if (newOrderButton) {
         });
 
       }
-
 
     }
   );
