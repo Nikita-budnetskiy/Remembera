@@ -1,110 +1,147 @@
 const flowerCards =
   document.querySelectorAll(".flower-card");
 
+
 const selectedFlowerInput =
   document.getElementById("selectedFlowerInput");
 
-const selectedPriceInput =
-  document.getElementById("selectedPriceInput");
 
 const summaryFlower =
   document.getElementById("summaryFlower");
 
-const summaryPrice =
-  document.getElementById("summaryPrice");
 
 const orderForm =
   document.getElementById("orderForm");
 
+
 const successMessage =
   document.getElementById("successMessage");
+
 
 const newOrderButton =
   document.getElementById("newOrderButton");
 
+
 const submitButton =
   document.getElementById("submitButton");
+
 
 const currentYear =
   document.getElementById("currentYear");
 
 
+
 /*
----------------------------------------
+=====================================
 ТЕКУЩИЙ ГОД
----------------------------------------
+=====================================
 */
 
 if (currentYear) {
+
   currentYear.textContent =
     new Date().getFullYear();
+
 }
 
 
+
 /*
----------------------------------------
+=====================================
 ВЫБОР ЦВЕТОВ
----------------------------------------
+=====================================
 */
 
 flowerCards.forEach((card) => {
 
-  card.addEventListener("click", () => {
-
-    flowerCards.forEach((item) => {
-      item.classList.remove("selected");
-    });
+  card.addEventListener(
+    "click",
+    () => {
 
 
-    card.classList.add("selected");
+      /*
+      Снимаем выделение
+      с остальных карточек
+      */
+
+      flowerCards.forEach(
+        (item) => {
+
+          item.classList.remove(
+            "selected"
+          );
+
+        }
+      );
 
 
-    const flower =
-      card.dataset.flower;
 
-    const price =
-      card.dataset.price;
+      /*
+      Выделяем выбранную
+      */
 
-
-    selectedFlowerInput.value =
-      flower;
-
-    selectedPriceInput.value =
-      price + " €";
+      card.classList.add(
+        "selected"
+      );
 
 
-    summaryFlower.textContent =
-      flower;
 
-    summaryPrice.textContent =
-      price.replace(".", ",") + " €";
+      const flower =
+        card.dataset.flower;
 
 
-    /*
-    Плавно прокручиваем
-    пользователя к форме
-    */
 
-    setTimeout(() => {
+      /*
+      Сохраняем название
+      в скрытое поле формы
+      */
 
-      document
-        .getElementById("order")
-        .scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
+      selectedFlowerInput.value =
+        flower;
 
-    }, 250);
 
-  });
+
+      /*
+      Показываем выбор
+      рядом с формой
+      */
+
+      summaryFlower.textContent =
+        flower;
+
+
+
+      /*
+      Через небольшой момент
+      прокручиваем к форме
+      */
+
+      setTimeout(() => {
+
+        document
+          .getElementById("order")
+          .scrollIntoView({
+
+            behavior: "smooth",
+
+            block: "start"
+
+          });
+
+      }, 250);
+
+
+    }
+  );
 
 });
 
 
+
 /*
----------------------------------------
+=====================================
 ОТПРАВКА ФОРМЫ
----------------------------------------
+=====================================
 */
 
 if (orderForm) {
@@ -113,12 +150,14 @@ if (orderForm) {
     "submit",
     async (event) => {
 
+
       event.preventDefault();
+
 
 
       /*
       Проверяем,
-      выбраны ли цветы
+      были ли выбраны цветы
       */
 
       if (!selectedFlowerInput.value) {
@@ -127,85 +166,157 @@ if (orderForm) {
           "Пожалуйста, сначала выберите цветы."
         );
 
+
         document
           .getElementById("flowers")
           .scrollIntoView({
+
             behavior: "smooth"
+
           });
 
+
         return;
+
       }
 
 
+
       /*
-      Меняем текст кнопки
+      Блокируем кнопку
       */
 
-      submitButton.disabled = true;
+      submitButton.disabled =
+        true;
+
 
       submitButton.textContent =
         "Отправляем…";
 
 
+
+      /*
+      Получаем данные формы
+      */
+
       const formData =
         new FormData(orderForm);
 
 
+
       try {
+
 
         const response =
           await fetch(
+
             orderForm.action,
+
             {
+
               method: "POST",
+
               body: formData,
+
               headers: {
-                Accept: "application/json"
+
+                Accept:
+                  "application/json"
+
               }
+
             }
+
           );
 
 
+
+        /*
+        Успешная отправка
+        */
+
         if (response.ok) {
+
 
           orderForm.style.display =
             "none";
+
 
           successMessage
             .classList
             .add("visible");
 
+
+
+          successMessage
+            .scrollIntoView({
+
+              behavior: "smooth",
+
+              block: "center"
+
+            });
+
+
         }
 
+
+
+        /*
+        Ошибка сервиса формы
+        */
+
         else {
+
 
           alert(
             "Не удалось отправить запрос. Пожалуйста, попробуйте ещё раз."
           );
 
+
         }
+
 
       }
 
+
+
+      /*
+      Ошибка соединения
+      */
+
       catch (error) {
 
+
         console.error(error);
+
 
         alert(
           "Произошла ошибка соединения. Пожалуйста, попробуйте позже."
         );
 
+
       }
 
+
+
+      /*
+      Возвращаем кнопку
+      */
+
       finally {
+
 
         submitButton.disabled =
           false;
 
+
         submitButton.textContent =
           "Оставить виртуальные цветы";
 
+
       }
+
 
     }
   );
@@ -213,10 +324,11 @@ if (orderForm) {
 }
 
 
+
 /*
----------------------------------------
-НОВЫЙ ЗАКАЗ
----------------------------------------
+=====================================
+НОВЫЙ ЗАПРОС
+=====================================
 */
 
 if (newOrderButton) {
@@ -225,40 +337,71 @@ if (newOrderButton) {
     "click",
     () => {
 
+
+      /*
+      Очищаем форму
+      */
+
       orderForm.reset();
+
+
+
+      /*
+      Возвращаем форму
+      */
 
       orderForm.style.display =
         "block";
+
 
       successMessage
         .classList
         .remove("visible");
 
 
-      flowerCards.forEach((card) => {
-        card.classList.remove("selected");
-      });
 
+      /*
+      Снимаем выбранные цветы
+      */
+
+      flowerCards.forEach(
+        (card) => {
+
+          card.classList.remove(
+            "selected"
+          );
+
+        }
+      );
+
+
+
+      /*
+      Очищаем значение
+      */
 
       selectedFlowerInput.value =
-        "";
-
-      selectedPriceInput.value =
         "";
 
 
       summaryFlower.textContent =
         "Цветы пока не выбраны";
 
-      summaryPrice.textContent =
-        "—";
 
+
+      /*
+      Возвращаем пользователя
+      к выбору цветов
+      */
 
       document
         .getElementById("flowers")
         .scrollIntoView({
+
           behavior: "smooth"
+
         });
+
 
     }
   );
