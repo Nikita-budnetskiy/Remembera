@@ -256,18 +256,17 @@ if (orderForm) {
 
       }
 
-      catch (error) {
+catch (error) {
 
-        console.error(
-          "EmailJS error:",
-          error
-        );
+  console.error("EmailJS error:", error);
 
-        alert(
-          "Не удалось отправить заявку. Пожалуйста, попробуйте ещё раз."
-        );
+  alert(
+    "Ошибка EmailJS:\n" +
+    "Статус: " + (error.status || "неизвестно") +
+    "\nТекст: " + (error.text || error.message || JSON.stringify(error))
+  );
 
-      }
+}
 
       finally {
 
