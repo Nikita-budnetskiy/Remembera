@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="Remembera — виртуальные цветы в память о близких. Выберите цветы, укажите место захоронения и создайте цифровой знак памяти."
+  >
+
+  <title>Remembera — цветы в память</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="header">
+  <div class="container header-inner">
+
+    <a href="#" class="logo">
+      Remembera
+    </a>
+
+    <nav class="nav">
+      <a href="#flowers">Цветы</a>
+      <a href="#how">Как это работает</a>
+      <a href="#order">Заказать</a>
+    </nav>
+
+  </div>
+</header>
+
+
+<main>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-decoration hero-decoration-one"></div>
+    <div class="hero-decoration hero-decoration-two"></div>
+
+    <div class="container hero-content">
+
+      <div class="hero-flower">
+        🌿
+      </div>
+
+      <p class="eyebrow">
+        Цифровой знак памяти
+      </p>
+
+      <h1>
+        Цветы для тех,<br>
+        кого мы помним.
+      </h1>
+
+      <p class="hero-text">
+        Даже если вы далеко, вы можете оставить символический цветок
+        в память о близком человеке.
+      </p>
+
+      <a href="#flowers" class="button button-primary">
+        Выбрать цветы
+      </a>
+
+      <p class="hero-note">
+        Виртуальное возложение. Физическая доставка цветов не осуществляется.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- FLOWERS -->
+
+  <section class="section flowers-section" id="flowers">
+
+    <div class="container">
+
+      <div class="section-heading">
+
+        <p class="eyebrow">
+          Выберите знак памяти
+        </p>
+
+        <h2>
+          Какие цветы вы хотите оставить?
+        </h2>
+
+        <p>
+          Выберите композицию, которая лучше всего передаёт ваши чувства.
+        </p>
+
+      </div>
+
+
+      <div class="flowers-grid">
+
+        <button
+          class="flower-card"
+          data-flower="Красные розы"
+          data-price="2.99"
+          type="button"
+        >
+
+          <div class="flower-image rose">
+            🌹
+          </div>
+
+          <div class="flower-card-content">
+
+            <h3>
+              Красные розы
+            </h3>
+
+            <p>
+              Символ любви, которая остаётся с нами.
+            </p>
+
+            <span class="price">
+              2,99 €
+            </span>
+
+          </div>
+
+        </button>
+
+
+        <button
+          class="flower-card"
+          data-flower="Белые лилии"
+          data-price="2.99"
+          type="button"
+        >
+
+          <div class="flower-image">
+            🤍
+          </div>
+
+          <div class="flower-card-content">
+
+            <h3>
+              Белые лилии
+            </h3>
+
+            <p>
+              Символ покоя, света и светлой памяти.
+            </p>
+
+            <span class="price">
+              2,99 €
+            </span>
+
+          </div>
+
+        </button>
+
+
+        <button
+          class="flower-card"
+          data-flower="Полевые цветы"
+          data-price="2.99"
+          type="button"
+        >
+
+          <div class="flower-image">
+            💐
+          </div>
+
+          <div class="flower-card-content">
+
+            <h3>
+              Полевые цветы
+            </h3>
+
+            <p>
+              Тёплая память о неповторимой жизни.
+            </p>
+
+            <span class="price">
+              2,99 €
+            </span>
+
+          </div>
+
+        </button>
+
+
+        <button
+          class="flower-card"
+          data-flower="Белые розы"
+          data-price="2.99"
+          type="button"
+        >
+
+          <div class="flower-image">
+            🥀
+          </div>
+
+          <div class="flower-card-content">
+
+            <h3>
+              Белые розы
+            </h3>
+
+            <p>
+              Нежность, уважение и память.
+            </p>
+
+            <span class="price">
+              2,99 €
+            </span>
+
+          </div>
+
+        </button>
+
+
+        <button
+          class="flower-card"
+          data-flower="Тюльпаны"
+          data-price="2.99"
+          type="button"
+        >
+
+          <div class="flower-image">
+            🌷
+          </div>
+
+          <div class="flower-card-content">
+
+            <h3>
+              Тюльпаны
+            </h3>
+
+            <p>
+              Для дорогих и тёплых воспоминаний.
+            </p>
+
+            <span class="price">
+              2,99 €
+            </span>
+
+          </div>
+
+        </button>
+
+
+        <button
+          class="flower-card"
+          data-flower="Подсолнухи"
+          data-price="2.99"
+          type="button"
+        >
+
+          <div class="flower-image">
+            🌻
+          </div>
+
+          <div class="flower-card-content">
+
+            <h3>
+              Подсолнухи
+            </h3>
+
+            <p>
+              В память о свете, который человек принёс в вашу жизнь.
+            </p>
+
+            <span class="price">
+              2,99 €
+            </span>
+
+          </div>
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- HOW IT WORKS -->
+
+  <section class="section how-section" id="how">
+
+    <div class="container">
+
+      <div class="section-heading">
+
+        <p class="eyebrow">
+          Просто и бережно
+        </p>
+
+        <h2>
+          Как работает Remembera
+        </h2>
+
+      </div>
+
+
+      <div class="steps">
+
+        <div class="step">
+
+          <div class="step-number">
+            01
+          </div>
+
+          <h3>
+            Выберите цветы
+          </h3>
+
+          <p>
+            Выберите виртуальную цветочную композицию,
+            которую хотите оставить.
+          </p>
+
+        </div>
+
+
+        <div class="step">
+
+          <div class="step-number">
+            02
+          </div>
+
+          <h3>
+            Укажите человека
+          </h3>
+
+          <p>
+            Напишите имя, город, страну и,
+            если известно, кладбище и номер могилы.
+          </p>
+
+        </div>
+
+
+        <div class="step">
+
+          <div class="step-number">
+            03
+          </div>
+
+          <h3>
+            Получите подтверждение
+          </h3>
+
+          <p>
+            После создания виртуального знака памяти
+            мы отправим подтверждение на вашу электронную почту.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ORDER -->
+
+  <section class="section order-section" id="order">
+
+    <div class="container">
+
+      <div class="order-wrapper">
+
+
+        <div class="order-info">
+
+          <p class="eyebrow">
+            Оставить цветы
+          </p>
+
+          <h2>
+            В память о ком вы хотите оставить цветы?
+          </h2>
+
+          <p>
+            Заполните информацию настолько подробно,
+            насколько вам удобно.
+          </p>
+
+
+          <div class="selected-summary">
+
+            <span>
+              Вы выбрали
+            </span>
+
+            <strong id="summaryFlower">
+              Цветы пока не выбраны
+            </strong>
+
+            <span id="summaryPrice">
+              —
+            </span>
+
+          </div>
+
+
+          <div class="order-disclaimer">
+
+            <strong>
+              Обратите внимание
+            </strong>
+
+            <p>
+              Remembera создаёт символические цифровые мемориальные знаки.
+              Физические цветы на кладбище не доставляются и не размещаются.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="form-card">
+
+          <form
+            id="orderForm"
+            action="https://formspree.io/f/ВАШ_FORM_ID"
+            method="POST"
+          >
+
+            <input
+              type="hidden"
+              name="Цветы"
+              id="selectedFlowerInput"
+            >
+
+            <input
+              type="hidden"
+              name="Цена"
+              id="selectedPriceInput"
+            >
+
+
+            <div class="form-group">
+
+              <label for="personName">
+                Имя человека *
+              </label>
+
+              <input
+                type="text"
+                id="personName"
+                name="Имя захороненного"
+                placeholder="Например, Александр Иванов"
+                required
+              >
+
+            </div>
+
+
+            <div class="form-row">
+
+              <div class="form-group">
+
+                <label for="country">
+                  Страна *
+                </label>
+
+                <input
+                  type="text"
+                  id="country"
+                  name="Страна"
+                  placeholder="Франция"
+                  required
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="city">
+                  Город *
+                </label>
+
+                <input
+                  type="text"
+                  id="city"
+                  name="Город"
+                  placeholder="Париж"
+                  required
+                >
+
+              </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="cemetery">
+                Кладбище
+              </label>
+
+              <input
+                type="text"
+                id="cemetery"
+                name="Кладбище"
+                placeholder="Например, Père-Lachaise"
+              >
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="grave">
+                Номер могилы или участка
+              </label>
+
+              <input
+                type="text"
+                id="grave"
+                name="Номер могилы"
+                placeholder="Например, участок 32, могила 145"
+              >
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="email">
+                Ваш email *
+              </label>
+
+              <input
+                type="email"
+                id="email"
+                name="Email заказчика"
+                placeholder="you@example.com"
+                required
+              >
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="message">
+                Несколько слов в память
+              </label>
+
+              <textarea
+                id="message"
+                name="Послание"
+                placeholder="Например: Ты навсегда в моём сердце."
+              ></textarea>
+
+            </div>
+
+
+            <label class="checkbox">
+
+              <input
+                type="checkbox"
+                id="agreement"
+                required
+              >
+
+              <span>
+                Я понимаю, что услуга является виртуальной
+                и не предполагает физическую доставку цветов.
+              </span>
+
+            </label>
+
+
+            <button
+              type="submit"
+              class="button button-submit"
+              id="submitButton"
+            >
+              Оставить виртуальные цветы
+            </button>
+
+
+            <p class="form-security">
+              Ваши данные используются только для обработки заказа.
+            </p>
+
+          </form>
+
+
+          <div
+            class="success-message"
+            id="successMessage"
+          >
+
+            <div class="success-icon">
+              🌿
+            </div>
+
+            <h3>
+              Ваш знак памяти принят
+            </h3>
+
+            <p>
+              Спасибо. Мы получили ваш запрос и отправим
+              подтверждение на указанную электронную почту.
+            </p>
+
+            <button
+              class="button button-primary"
+              id="newOrderButton"
+              type="button"
+            >
+              Оставить ещё цветы
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FINAL CTA -->
+
+  <section class="final-section">
+
+    <div class="container final-content">
+
+      <div class="final-symbol">
+        ❦
+      </div>
+
+      <h2>
+        Память не знает расстояний.
+      </h2>
+
+      <p>
+        Иногда один цветок говорит больше, чем множество слов.
+      </p>
+
+      <a
+        href="#flowers"
+        class="button button-light"
+      >
+        Выбрать цветы
+      </a>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<footer class="footer">
+
+  <div class="container footer-inner">
+
+    <div>
+
+      <a href="#" class="logo footer-logo">
+        Remembera
+      </a>
+
+      <p>
+        Цветы в память о тех, кто остаётся с нами.
+      </p>
+
+    </div>
+
+
+    <div class="footer-links">
+
+      <a href="privacy.html">
+        Политика конфиденциальности
+      </a>
+
+      <a href="terms.html">
+        Условия использования
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <div class="container copyright">
+
+    © <span id="currentYear"></span> Remembera
+
+  </div>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
